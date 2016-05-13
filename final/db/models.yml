@@ -1,0 +1,92 @@
+# Example table for a typical Book model.
+#
+# Book
+#   title: string
+#   author_id: integer
+#   price: integer
+#   summary: text
+#   hardcover: boolean
+#
+# Indent consistently!  Follow the above syntax exactly.
+# Typical column choices are: string, text, integer, boolean, date, time, and datetime.
+#
+#
+# Specifying Default Values
+# ----------------------------------------------------
+# Default column values can be specified like this:
+#    price: integer(0)
+#
+# If not specified, Boolean columns always default to false.
+#
+#
+# Convention-Based Defaults:
+# ----------------------------------------------------
+# You can omit the column type if it's a string, or if it's obviously an integer column:
+#
+#
+# Book
+#   title
+#   author_id
+#   price: integer
+#   summary: text
+#   hardcover: boolean
+#
+# Complete details are in the README file online.
+#
+# Have fun!
+
+User
+  name: text
+  email: text
+  password: text
+
+Game
+  title: text
+  cover_url: text
+  min_age: integer
+  year: integer
+  description: text
+  playtime: integer
+  min_players: integer
+  max_players: integer
+
+Session
+  game_id: integer
+  player1_id: integer
+  player2_id: integer
+  player3_id: integer
+  player4_id: integer
+  player5_id: integer
+  player1_score: integer
+  player2_score: integer
+  player3_score: integer
+  player4_score: integer
+  player5_score: integer
+  player1_won: boolean
+  player2_won: boolean
+  player3_won: boolean
+  player4_won: boolean
+  player5_won: boolean
+
+Expansion
+  game_id: integer
+  title: text
+  cover_url: text
+  min_age: integer
+  year: integer
+  description: text
+  playtime: integer
+  min_players: integer
+  max_players: integer
+
+Collection
+  game_id: integer
+  player_id: integer
+  date_added: date
+  rating: integer
+  expansion_id: integer
+
+
+
+
+
