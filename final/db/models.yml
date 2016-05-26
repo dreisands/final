@@ -38,7 +38,7 @@
 User
   name: text
   email: text
-  password: text
+  password_digest: text
 
 Game
   title: text
@@ -46,27 +46,20 @@ Game
   min_age: integer
   year: integer
   description: text
-  playtime: integer
+  min_playtime: integer
+  max_playtime: integer
   min_players: integer
   max_players: integer
 
-Session
+GameSession
   game_id: integer
-  player1_id: integer
-  player2_id: integer
-  player3_id: integer
-  player4_id: integer
-  player5_id: integer
-  player1_score: integer
-  player2_score: integer
-  player3_score: integer
-  player4_score: integer
-  player5_score: integer
-  player1_won: boolean
-  player2_won: boolean
-  player3_won: boolean
-  player4_won: boolean
-  player5_won: boolean
+  played_on: date
+
+GameParticipant
+  game_session_id: integer
+  user_id: integer
+  score: integer
+  did_win: boolean
 
 Expansion
   game_id: integer
@@ -75,7 +68,8 @@ Expansion
   min_age: integer
   year: integer
   description: text
-  playtime: integer
+  min_playtime: integer
+  max_playtime: integer
   min_players: integer
   max_players: integer
 

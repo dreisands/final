@@ -32,12 +32,30 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "min_age"
     t.integer "year"
     t.text    "description"
-    t.integer "playtime"
     t.integer "min_players"
     t.integer "max_players"
+    t.integer "min_playtime"
+    t.integer "max_playtime"
   end
 
   add_index "expansions", ["game_id"], name: "index_expansions_on_game_id"
+
+  create_table "game_participants", force: :cascade do |t|
+    t.integer "game_session_id"
+    t.integer "user_id"
+    t.integer "score"
+    t.boolean "did_win",         default: false
+  end
+
+  add_index "game_participants", ["game_session_id"], name: "index_game_participants_on_game_session_id"
+  add_index "game_participants", ["user_id"], name: "index_game_participants_on_user_id"
+
+  create_table "game_sessions", force: :cascade do |t|
+    t.integer "game_id"
+    t.date    "played_on"
+  end
+
+  add_index "game_sessions", ["game_id"], name: "index_game_sessions_on_game_id"
 
   create_table "games", force: :cascade do |t|
     t.text    "title"
@@ -45,41 +63,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "min_age"
     t.integer "year"
     t.text    "description"
-    t.integer "playtime"
     t.integer "min_players"
     t.integer "max_players"
+    t.integer "min_playtime"
+    t.integer "max_playtime"
   end
-
-  create_table "sessions", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "player1_id"
-    t.integer "player2_id"
-    t.integer "player3_id"
-    t.integer "player4_id"
-    t.integer "player5_id"
-    t.integer "player1_score"
-    t.integer "player2_score"
-    t.integer "player3_score"
-    t.integer "player4_score"
-    t.integer "player5_score"
-    t.boolean "player1_won",   default: false
-    t.boolean "player2_won",   default: false
-    t.boolean "player3_won",   default: false
-    t.boolean "player4_won",   default: false
-    t.boolean "player5_won",   default: false
-  end
-
-  add_index "sessions", ["game_id"], name: "index_sessions_on_game_id"
-  add_index "sessions", ["player1_id"], name: "index_sessions_on_player1_id"
-  add_index "sessions", ["player2_id"], name: "index_sessions_on_player2_id"
-  add_index "sessions", ["player3_id"], name: "index_sessions_on_player3_id"
-  add_index "sessions", ["player4_id"], name: "index_sessions_on_player4_id"
-  add_index "sessions", ["player5_id"], name: "index_sessions_on_player5_id"
 
   create_table "users", force: :cascade do |t|
     t.text "name"
     t.text "email"
-    t.text "password"
+    t.text "password_digest"
   end
 
 end
