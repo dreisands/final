@@ -1,0 +1,14 @@
+
+<aside>
+  <h3>Recommended For You</h3>
+  <% if session["game_id"].present? %>
+    <%= render Game.find_by(id: session["game_id"]) %>
+  <% else %>
+    <%= render Game.sample %>
+  <% end %>
+</aside>
+
+<div class="game-selections">
+  <%= render 'game', game: nil %>
+  <%= render @games %>
+</div>

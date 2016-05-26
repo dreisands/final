@@ -1,0 +1,21 @@
+<h1>
+  <%= @game.title %>
+  <small>
+    <%= link_to "Edit This Game", edit_game_path(@game.id) %>
+    <%= link_to "Delete This Game", game_path(@game.id), :method => :delete %>
+  </small>
+</h1>
+
+<div class="details">
+
+  <p><%= image_tag @game.cover_url, class: 'pull-right' %></p>
+
+  <p><strong>Released:</strong> <%= @game.year %></p>
+  <p><strong>Description:</strong> <%= @game.description %></p>
+  <p><strong>Minimum player age: </strong> <%= @game.min_age %></p>
+  <p><strong>Minimum # of players: </strong> <%= @game.min_players %></p>
+  <p><strong>Maximum # of players: </strong> <%= @game.max_players %></p>
+  <p><strong>Minimum playtime: </strong> <%= @game.min_playtime %></p>
+  <p><strong>Maximum playtime: </strong> <%= @game.max_playtime %></p>
+
+</div>

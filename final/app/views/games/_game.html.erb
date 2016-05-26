@@ -1,0 +1,9 @@
+<% cover_url = game ? game.cover_url : 'add_new.png' %>
+<% path = game ? game_path(game.id) : new_game_path %>
+
+<div class="game-box">
+  <%= link_to image_tag(cover_url), path %>
+  <% if game %>
+    <h3><%= link_to game.title, game_path(game.id) %></h3>
+  <% end %>
+</div>
