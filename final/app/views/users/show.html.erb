@@ -1,0 +1,20 @@
+<h1>User Account</h1>
+
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<h2>Collection</h2>
+<% @user.collections.each do |collection| %>
+	<% game = Game.find_by(id: collection.game_id)%>
+	<p> <%= link_to game.title, game_path(game.id) %> </p> 
+		<ul> Rating: <%= collection.rating %> </ul>
+		<ul> Date Added: <%= collection.date_added %> </ul>
+		<% if @user.id == session[:user_id].to_i %>
+		  <ul> <%= link_to "Delete Game From Collection", collection_path(collection.id), :method => :delete %> </ul>
+		<% end %>
+<% end %>
+
+
+<% if @user.id == session[:user_id].to_i %>
+  <p> <%= link_to "Add Game To Collection", new_collection_path %> </p>
+<% end %>

@@ -50,6 +50,7 @@ Game
   max_playtime: integer
   min_players: integer
   max_players: integer
+  is_expansion: boolean
 
 GameSession
   game_id: integer
@@ -62,23 +63,17 @@ GameParticipant
   did_win: boolean
 
 Expansion
-  game_id: integer
-  title: text
-  cover_url: text
-  min_age: integer
-  year: integer
-  description: text
-  min_playtime: integer
-  max_playtime: integer
-  min_players: integer
-  max_players: integer
+  base_id: integer
+  expansion_game_id: integer
+
 
 Collection
+  user_id: integer
   game_id: integer
-  player_id: integer
   date_added: date
   rating: integer
-  expansion_id: integer
+
+
 
 
 

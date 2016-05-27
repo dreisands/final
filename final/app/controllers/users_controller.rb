@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
-    if !@user || (@user.id != session[:user_id].to_i)
-      redirect_to root_url
-    end
   end
 
   def index
@@ -20,7 +17,7 @@ class UsersController < ApplicationController
     user.email = params[:user][:email]
     user.password = params[:user][:password]
     user.save
-    redirect_to movies_url
+    redirect_to games_url
   end
 
   def destroy

@@ -1,0 +1,40 @@
+<%= form_for @game do |form| %>
+
+  <p><%= form.label :title %>
+  <br>
+  <%= form.text_field :title, size: 80, autofocus: true %></p>
+
+  <p><%= form.label :year %>
+  <br>
+  <%= form.text_field :year %></p>
+
+  <%= form.label :cover_url,  "Link to cover URL" %>
+  <br>
+  <%= form.text_field :cover_url, size: 80 %>
+
+  <p><%= form.label :description %>
+  <br>
+  <%= form.text_area :description, rows: 4, cols: 80 %></p>
+
+  <p><%= form.label :min_age, "Minimum player age" %>
+  <br>
+  <%= form.text_field :min_age %></p>
+
+  <p><%= form.label :min_players, "Minimum number of players" %>
+  <br>
+  <%= form.text_field :min_players %></p>
+
+  <p><%= form.label :max_players, "Maximum number of players" %>
+  <br>
+  <%= form.text_field :max_players %></p>
+
+  <p><%= form.label :min_playtime, "Minimum playtime in minutes" %>
+  <br>
+  <%= form.text_field :min_playtime %></p>
+
+  <p><%= form.label :max_playtime, "Maximum playtime in minutes" %>
+  <br>
+  <%= form.text_field :max_playtime %></p>
+
+  <%= form.submit %>
+<% end %>

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resources :games
   resources :users
-  resources :expansions
   resources :game_sessions
   resources :collections
 

@@ -15,30 +15,21 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "collections", force: :cascade do |t|
     t.integer "game_id"
-    t.integer "player_id"
     t.date    "date_added"
     t.integer "rating"
-    t.integer "expansion_id"
+    t.integer "user_id"
   end
 
-  add_index "collections", ["expansion_id"], name: "index_collections_on_expansion_id"
   add_index "collections", ["game_id"], name: "index_collections_on_game_id"
-  add_index "collections", ["player_id"], name: "index_collections_on_player_id"
+  add_index "collections", ["user_id"], name: "index_collections_on_user_id"
 
   create_table "expansions", force: :cascade do |t|
-    t.integer "game_id"
-    t.text    "title"
-    t.text    "cover_url"
-    t.integer "min_age"
-    t.integer "year"
-    t.text    "description"
-    t.integer "min_players"
-    t.integer "max_players"
-    t.integer "min_playtime"
-    t.integer "max_playtime"
+    t.integer "base_id"
+    t.integer "expansion_game_id"
   end
 
-  add_index "expansions", ["game_id"], name: "index_expansions_on_game_id"
+  add_index "expansions", ["base_id"], name: "index_expansions_on_base_id"
+  add_index "expansions", ["expansion_game_id"], name: "index_expansions_on_expansion_game_id"
 
   create_table "game_participants", force: :cascade do |t|
     t.integer "game_session_id"
@@ -67,6 +58,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "max_players"
     t.integer "min_playtime"
     t.integer "max_playtime"
+    t.boolean "is_expansion", default: false
   end
 
   create_table "users", force: :cascade do |t|

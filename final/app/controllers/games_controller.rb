@@ -21,15 +21,16 @@ class GamesController < ApplicationController
 
   def create
   	game = Game.new
-  	game.title = params[:title]
-  	game.cover_url = params[:cover_url]
-  	game.min_age = params[:min_age]
-  	game.year = params[:year]
-  	game.description = params[:description]
-  	game.min_playtime = params[:min_playtime]
-  	game.max_playtime = params[:max_playtime]
-  	game.min_players = params[:min_players]
-  	game.max_players = params[:max_players]
+    temp = params[:game]
+  	game.title = temp[:title]
+  	game.cover_url = temp[:cover_url]
+  	game.min_age = temp[:min_age]
+  	game.year = temp[:year]
+  	game.description = temp[:description]
+  	game.min_playtime = temp[:min_playtime]
+  	game.max_playtime = temp[:max_playtime]
+  	game.min_players = temp[:min_players]
+  	game.max_players = temp[:max_players]
     game.save
     redirect_to games_url
   end
@@ -52,15 +53,16 @@ class GamesController < ApplicationController
 
   def update
     game = Game.find_by(id: params[:id])
-    game.title = params[:title]
-  	game.cover_url = params[:cover_url]
-  	game.min_age = params[:min_age]
-  	game.year = params[:year]
-  	game.description = params[:description]
-  	game.min_playtime = params[:min_playtime]
-  	game.max_playtime = params[:max_playtime]
-  	game.min_players = params[:min_players]
-  	game.max_players = params[:max_players]
+    temp = params[:game]
+    game.title = temp[:title]
+  	game.cover_url = temp[:cover_url]
+  	game.min_age = temp[:min_age]
+  	game.year = temp[:year]
+  	game.description = temp[:description]
+  	game.min_playtime = temp[:min_playtime]
+  	game.max_playtime = temp[:max_playtime]
+  	game.min_players = temp[:min_players]
+  	game.max_players = temp[:max_players]
     game.save
     redirect_to games_url(@game)
   end

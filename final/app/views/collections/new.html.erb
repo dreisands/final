@@ -1,0 +1,13 @@
+<h1>Add New Game to Collection!</h1>
+
+<%= form_for @collection do |form| %>
+
+  <p><%= form.label :game_id, "Game" %>
+  <br>
+  <%= form.collection_select :game_id, Game.all.order('title'), :id, :title %></p>
+  <p><%= form.label :rating %>
+  <br>
+  <%= form.text_field :rating %></p>
+  <p><%= form.submit "Add game!" %></p>
+
+<% end %>
