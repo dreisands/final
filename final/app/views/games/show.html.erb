@@ -17,5 +17,11 @@
   <p><strong>Maximum # of players: </strong> <%= @game.max_players %></p>
   <p><strong>Minimum playtime: </strong> <%= @game.min_playtime %></p>
   <p><strong>Maximum playtime: </strong> <%= @game.max_playtime %></p>
+  <% if @game.is_expansion %>
+    <% base_game_id = (Expansion.find_by(expansion_game_id: @game.id)).base_id %>
+    <% base_game = Game.find_by(id: base_game_id) %>
+    <p><strong> Base game: </strong> <%= link_to base_game.title, game_path(base_game_id) %> </p>
+
+  <% end %>
 
 </div>
