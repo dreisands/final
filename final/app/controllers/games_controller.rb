@@ -31,7 +31,18 @@ class GamesController < ApplicationController
   	game.max_playtime = temp[:max_playtime]
   	game.min_players = temp[:min_players]
   	game.max_players = temp[:max_players]
+    game.is_expansion = temp[:is_expansion]
+    if game.is_expansion
+      expansion = Expansion.new
+      expansion.expansion_game_id = game.id
+      expansion.base_id = temp[:base_id]
+      game.base_id = temp[:base_id]
+      expansion.save
+    else
+      game.base_id = nil
+    end
     game.save
+    
     redirect_to games_url
   end
 
@@ -63,6 +74,16 @@ class GamesController < ApplicationController
   	game.max_playtime = temp[:max_playtime]
   	game.min_players = temp[:min_players]
   	game.max_players = temp[:max_players]
+    game.is_expansion = temp[:is_expansion]
+    if game.is_expansion
+      expansion = Expansion.new
+      expansion.expansion_game_id = game.id
+      expansion.base_id = temp[:base_id]
+      game.base_id = temp[:base_id]
+      expansion.save
+    else
+      game.base_id = nil
+    end
     game.save
     redirect_to games_url(@game)
   end

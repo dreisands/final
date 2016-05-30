@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160529233928) do
 
   create_table "collections", force: :cascade do |t|
     t.integer "game_id"
@@ -59,12 +59,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "min_playtime"
     t.integer "max_playtime"
     t.boolean "is_expansion", default: false
+    t.integer "base_id"
   end
 
+  add_index "games", ["base_id"], name: "index_games_on_base_id"
+
   create_table "users", force: :cascade do |t|
-    t.text "name"
-    t.text "email"
-    t.text "password_digest"
+    t.text     "name"
+    t.text     "email"
+    t.text     "password_digest"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

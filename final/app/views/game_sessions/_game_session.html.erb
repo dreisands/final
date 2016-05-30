@@ -1,0 +1,14 @@
+
+<div>
+  <p> <%= "Game Session #{game_session.id}" %> </p>
+  <ul> <%= Game.find_by(id: game_session.game_id).title %> </ul>
+  <ul> Played on: <%= game_session.played_on %>
+  	<% GameParticipant.where(game_session_id: game_session.id).each do |part| %>
+  		<ul> Player: <%= User.find(part.user_id).name %> </ul>
+  		<ul> Score: <%= part.score %> </ul>
+  		<ul> Did win? <%= part.did_win %> </ul>
+  		<br>
+
+  	<% end %>
+  </ul>
+</div>

@@ -12,10 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new
-    user.name = params[:user][:name]
-    user.email = params[:user][:email]
-    user.password = params[:user][:password]
+    user = User.new(user_params)
     user.save
     redirect_to games_url
   end
@@ -23,5 +20,10 @@ class UsersController < ApplicationController
   def destroy
     User.delete(params[:id])
     redirect_to users_url
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :salt, :encrypted_password)
   end
 end

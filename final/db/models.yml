@@ -51,6 +51,7 @@ Game
   min_players: integer
   max_players: integer
   is_expansion: boolean
+  base_id: integer
 
 GameSession
   game_id: integer

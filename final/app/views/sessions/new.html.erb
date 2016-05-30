@@ -4,6 +4,7 @@
 
   <p><%= label_tag :email %><%= text_field_tag :email, '', autofocus: true, size: 40, required: true %></p>
   <p><%= label_tag :password %><%= password_field_tag :password, '', size: 40, required: true %></p>
+  <p><%= link_to "Forgotten password?", new_password_reset_path %> </p>
   <p><%= submit_tag "Let Me In!" %></p>
 
 <% end %>

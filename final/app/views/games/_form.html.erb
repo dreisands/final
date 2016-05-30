@@ -36,5 +36,14 @@
   <br>
   <%= form.text_field :max_playtime %></p>
 
+  <p><%= form.label :is_expansion, "Expansion?" %>
+  <br>
+  <%= form.check_box :is_expansion %></p>
+
+  <p><%= form.label :base_id, "If expansion, what is the base game?" %>
+  <br>
+  <%= form.collection_select :base_id, Game.where(is_expansion: false).all.order('title'), :id, :title %></p>
+
+
   <%= form.submit %>
 <% end %>
